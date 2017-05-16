@@ -9,6 +9,7 @@ class Post extends Component {
     this.state = {
       clickCounter: 0,
       commentsList: props.post.comments,
+      newComment: '',
       title: props.post.title,
       author: props.post.author,
       body: props.post.body
@@ -43,10 +44,18 @@ class Post extends Component {
     console.log(`new comment is ${input.value}`);
 
     const currentCommentList = this.state.commentsList
-    currentCommentList.push(input.value)
+    // currentCommentList.push(input.value)
 
     this.setState({
-      commentsList: currentCommentList
+      commentsList: this.state.commentsList.concat(input.value),
+      newComment: ''
+    })
+  }
+
+  commentInputChange(e) {
+    e.preventDefault()
+    this.setState({
+      newComment: e.target.value
     })
   }
 
@@ -56,6 +65,7 @@ class Post extends Component {
 
     this.setState({
       body: e.target.value
+
     })
   }
 
@@ -63,6 +73,8 @@ class Post extends Component {
     let commentsList = this.state.commentsList.map(function(comment, index) {
       return <li key={index}>{comment}</li>
     })
+
+    let newComment = this.state.newComment ? <li>{this.state.newComment}</li> : " "
 
     return (
       <div className = "Post">
@@ -84,12 +96,13 @@ class Post extends Component {
           <form onSubmit={(e) => this.newComment(e)}>
             <label>
               New Comment:
-              <input type="text" placeholder="Enter your comment"></input>
+              <input type="text" onChange={(e) => this.commentInputChange(e)} value={this.state.newComment}></input>
             </label>
               <button>Submit</button>
           </form>
           <div>
             {commentsList}
+            {newComment}
           </div>
         </div>
       </div>

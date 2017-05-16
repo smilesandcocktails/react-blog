@@ -37,7 +37,9 @@ class Todo extends Component {
     var index = e.target.value
     var selected = list[index]
     selected.vote += 1
+
     list.splice(index, 1, selected)
+
     this.setState ({
       list: list
     })
@@ -57,6 +59,18 @@ class Todo extends Component {
     })
   }
 
+  remove(e) {
+    var list = this.state.list
+    var index = e.target.value
+    var selected = list[index]
+
+    list.splice(index,1)
+
+    this.setState ({
+      list: list
+    })
+  }
+
   render() {
 
     let todoList = this.state.list.map((list, index) => {
@@ -64,6 +78,7 @@ class Todo extends Component {
         < Other todoList={list} key={index} />
         <button onClick={(e) => this.like(e)} value={index}>Like</button>
         <button onClick={(e) => this.dislike(e)} value={index}>Dislike</button>
+        <button onClick={(e) => this.remove(e)} value={index}>Remove</button>
       </div>
     })
 

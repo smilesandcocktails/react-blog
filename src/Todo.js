@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Other from './Other.js'
 // import './Todo.css';
 
 
@@ -60,7 +61,7 @@ class Todo extends Component {
 
     let todoList = this.state.list.map((list, index) => {
       return<div>
-        <p key={index}>{list.todo} - {list.vote}</p>
+        < Other todoList={list} key={index} />
         <button onClick={(e) => this.like(e)} value={index}>Like</button>
         <button onClick={(e) => this.dislike(e)} value={index}>Dislike</button>
       </div>

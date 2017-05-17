@@ -27,7 +27,7 @@ import './index.css';
 const movies_arr = [
   'Empire Strikes Back',
   'In the Mood for Love',
-  'Pretty Woman'
+  'Big Fish'
 ]
 
 ReactDOM.render(

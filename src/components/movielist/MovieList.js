@@ -6,11 +6,26 @@ class MovieList extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.state ={
+      movieDisplayed: props.movies
+    }
   }
 
-  movieSearch() {
-    alert('Searching')
+  movieSearch(e) {
+
+    //prevState is the previous state before state is changing
+    //props is props data from parent
+    const searchQuery = e.target.value.toLowerCase()
+    this.setState((prevState, props) => {
+      let searchedMovies = props.movies.filter((movie) => {
+        return movie.toLowerCase().includes(searchQuery)
+      })
+      return {
+        movieDisplayed: searchedMovies
+      }
+    })
+
+
   }
 
   render() {
@@ -25,7 +40,7 @@ class MovieList extends React.Component {
 
         <MovieForm handleSearch={(e) =>this.movieSearch(e)}/>
 
-        <MovieItem movieItems={this.props.movies}/>
+        <MovieItem movieItems={this.state.movieDisplayed}/>
 
       </div>
     );

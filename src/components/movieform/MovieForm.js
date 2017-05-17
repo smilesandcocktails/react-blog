@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MovieForm = (props) => (
-
   <form>
     <label>
       Search Movie: {'         '}
@@ -9,7 +8,6 @@ const MovieForm = (props) => (
       </input>
     </label>
   </form>
-
 )
 
 export default MovieForm;

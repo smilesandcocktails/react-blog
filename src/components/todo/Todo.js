@@ -74,8 +74,8 @@ class Todo extends Component {
   render() {
 
     let todoList = this.state.list.map((list, index) => {
-      return<div>
-        < Other todoList={list} key={index} />
+      return<div key={index}>
+        < Other todoList={list}  />
         <button onClick={(e) => this.like(e)} value={index}>Like</button>
         <button onClick={(e) => this.dislike(e)} value={index}>Dislike</button>
         <button onClick={(e) => this.remove(e)} value={index}>Remove</button>
